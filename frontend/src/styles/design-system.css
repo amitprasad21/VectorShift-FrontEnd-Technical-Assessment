@@ -1,0 +1,366 @@
+/* src/styles/design-system.css */
+
+/* Apple Minimal & Luxury Dark Tokens */
+:root {
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --backdrop-blur: blur(12px);
+
+  /* Luxury Monochromatic Palette */
+  --bg-app: #000000;                /* Absolute Infinite Black */
+  --bg-canvas: #050505;             /* Extremely deep slate black */
+  --bg-card: rgba(10, 10, 10, 0.85);/* Sleek matte black */
+  --bg-input: #121212;              /* Apple metal gray */
+  --bg-toolbar: rgba(10, 10, 10, 0.8);
+  
+  --border-color: rgba(255, 255, 255, 0.08); /* Sophisticated ultra-thin border */
+  --border-color-hover: rgba(255, 255, 255, 0.18);
+  --border-color-active: #ffffff;
+  
+  /* Text styling */
+  --text-primary: #f5f5f7;          /* High contrast off-white */
+  --text-secondary: #86868b;        /* Apple silver gray */
+  --text-muted: #515154;            /* Dark graphite gray */
+  
+  /* Accents - Silver, Gold & Steel Monochromatic */
+  --color-primary: #ffffff;         /* Pure clean white */
+  --color-primary-glow: rgba(255, 255, 255, 0.04);
+  --color-success: #30d158;         /* Apple Green */
+  --color-warning: #ff9f0a;         /* Apple Orange */
+  --color-danger: #ff453a;          /* Apple Red */
+  
+  /* Visual canvas parameters */
+  --color-edge: rgba(255, 255, 255, 0.15); /* Clean, subtle steel connecting line */
+  --color-edge-arrow: rgba(255, 255, 255, 0.3);
+  --reactflow-grid: rgba(255, 255, 255, 0.015);
+  
+  /* Standard iOS ease-out curve (fast start, smooth spring-like deceleration) */
+  --transition-apple: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Deep, luxurious organic shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.65);
+  --shadow-glow: 0 0 1px 1px rgba(255, 255, 255, 0.08), 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Structural resets */
+body {
+  margin: 0;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  letter-spacing: -0.015em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* Structural Layout Wrappers */
+.app-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-app);
+  overflow: hidden;
+}
+
+.canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: var(--bg-canvas);
+}
+
+/* Glassmorphic panel overrides for absolute minimal luxury */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition-apple);
+}
+
+.glass-panel:hover {
+  border-color: var(--border-color-hover);
+}
+
+/* Form input elements styling */
+.node-input-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.node-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.node-input, .node-select, .node-textarea {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-family: var(--font-family);
+  outline: none;
+  transition: var(--transition-apple);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.node-input:focus, .node-select:focus, .node-textarea:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  background-color: #161616;
+}
+
+.node-textarea {
+  resize: none;
+  min-height: 52px;
+}
+
+/* Buttons */
+.btn-primary {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+  transition: var(--transition-apple);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #f5f5f7;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.08);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.3;
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Core React Flow Stylings Overrides */
+.react-flow__background {
+  background-color: var(--bg-canvas) !important;
+}
+
+.react-flow__minimap {
+  background-color: rgba(5, 5, 5, 0.85) !important;
+  backdrop-filter: var(--backdrop-blur) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(0, 0, 0, 0.65) !important;
+}
+
+.react-flow__minimap-node {
+  fill: #ffffff !important;
+  opacity: 0.2;
+}
+
+.react-flow__controls {
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  background-color: rgba(10, 10, 10, 0.8) !important;
+  backdrop-filter: var(--backdrop-blur) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.react-flow__controls-button {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  fill: var(--text-secondary) !important;
+  color: var(--text-secondary) !important;
+  transition: var(--transition-apple) !important;
+}
+
+.react-flow__controls-button:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  fill: var(--text-primary) !important;
+}
+
+/* React Flow Handle Styling overrides */
+.react-flow__handle {
+  width: 7px !important;
+  height: 7px !important;
+  background-color: #000000 !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 50% !important;
+  transition: var(--transition-apple) !important;
+}
+
+.react-flow__handle:hover {
+  width: 9px !important;
+  height: 9px !important;
+  border-color: #ffffff !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4) !important;
+}
+
+.react-flow__handle-connecting {
+  border-color: var(--color-warning) !important;
+}
+
+.react-flow__handle-valid {
+  border-color: var(--color-success) !important;
+  box-shadow: 0 0 4px var(--color-success) !important;
+}
+
+/* Animated Flow Edges */
+.react-flow__edge-path {
+  stroke: var(--color-edge) !important;
+  stroke-width: 1.5px !important;
+  stroke-dasharray: none !important; /* Non-dash minimal luxury curves */
+  animation: none !important;
+  transition: stroke 0.2s ease, stroke-width 0.2s ease;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #ffffff !important;
+  stroke-width: 2px !important;
+}
+
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: rgba(255, 255, 255, 0.6) !important;
+  stroke-width: 2px !important;
+}
+
+/* Sliding Alert Toasts */
+.pipeline-toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 550;
+  box-shadow: var(--shadow-lg);
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.pipeline-toast.error {
+  background: rgba(15, 15, 15, 0.95);
+  border: 1px solid rgba(255, 69, 58, 0.2);
+  color: #ff453a;
+  box-shadow: 0 10px 30px rgba(255, 69, 58, 0.1);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(24px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Node content blocks (replaces inline styles) */
+.node-info-block {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.node-console-block {
+  background-color: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 8px;
+  font-family: monospace;
+  font-size: 0.68rem;
+  color: #30d158;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.node-hint-text {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: -4px;
+  line-height: 1.35;
+}
+
+.node-hint-text code {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* DAG status badge */
+.dag-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.dag-valid {
+  color: var(--color-success);
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px dashed var(--color-success);
+}
+
+.dag-invalid {
+  color: var(--color-warning);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px dashed var(--color-warning);
+}
+
+/* Error boundary fallback */
+.error-boundary-fallback {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}

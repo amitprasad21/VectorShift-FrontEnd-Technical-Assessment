@@ -1,0 +1,136 @@
+/* src/components/Toolbar/styles.css */
+
+.toolbar-panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.toolbar-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+.toolbar-subtitle {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-top: 3px;
+  letter-spacing: -0.01em;
+}
+
+.toolbar-items {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  max-width: 100%;
+}
+
+.toolbar-items::-webkit-scrollbar {
+  display: none;
+}
+
+/* Apple Matte Black Monochromatic Button Chip */
+.draggable-node {
+  cursor: grab;
+  min-width: 96px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition-apple);
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.draggable-node:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.draggable-node:active {
+  cursor: grabbing;
+  transform: scale(0.97);
+  opacity: 0.8;
+}
+
+.draggable-node-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  transition: var(--transition-apple);
+}
+
+.draggable-node:hover .draggable-node-icon {
+  color: #ffffff;
+}
+
+.draggable-node-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Individual subtle outline colors on hover for a high-end experience */
+.draggable-node-input:hover {
+  border-color: rgba(48, 209, 88, 0.35);
+}
+
+.draggable-node-llm:hover {
+  border-color: rgba(191, 90, 242, 0.35);
+}
+
+.draggable-node-output:hover {
+  border-color: rgba(255, 159, 10, 0.35);
+}
+
+.draggable-node-text:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Responsive design wrappers */
+@media (max-width: 768px) {
+  .toolbar-panel {
+    padding: 12px 20px;
+    margin: 10px;
+    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .toolbar-items {
+    width: 100%;
+    padding-bottom: 2px;
+  }
+}

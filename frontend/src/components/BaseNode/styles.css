@@ -1,0 +1,175 @@
+/* src/components/BaseNode/styles.css */
+
+/* Apple-style Squircle Node Container */
+.base-node-container {
+  min-width: 250px;
+  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: var(--shadow-md);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  position: relative;
+  transition: var(--transition-apple);
+  box-sizing: border-box;
+}
+
+.base-node-container:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
+}
+
+/* Monochromatic Selected Node Casing */
+.react-flow__node.selected .base-node-container {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 0.5px #ffffff, 0 16px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Luxury Monochromatic Themes (Very subtle steel gray branding) */
+.base-node-theme-input {
+  --node-accent: var(--color-success);
+}
+
+.base-node-theme-output {
+  --node-accent: var(--color-warning);
+}
+
+.base-node-theme-llm {
+  --node-accent: rgba(255, 255, 255, 0.6);
+}
+
+.base-node-theme-text {
+  --node-accent: rgba(255, 255, 255, 0.6);
+}
+
+/* Minimal Node Header */
+.node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.015);
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+}
+
+.node-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.node-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  opacity: 0.8;
+}
+
+.node-header-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Header delete button: hidden by default, fades in on card hover for clean look */
+.node-header-delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  transition: var(--transition-apple);
+  opacity: 0;
+}
+
+.base-node-container:hover .node-header-delete-btn {
+  opacity: 1;
+}
+
+.node-header-delete-btn:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Node Body Content */
+.node-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+/* Sockets handles placements */
+.handle-wrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.handle-wrapper-left {
+  left: 0;
+  flex-direction: row;
+}
+
+.handle-wrapper-right {
+  right: 0;
+  flex-direction: row-reverse;
+}
+
+.base-node-handle {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  pointer-events: all;
+}
+
+/* Clean Micro labels for Sockets */
+.handle-label {
+  font-size: 0.62rem;
+  font-family: var(--font-family);
+  background-color: #0d0d0d;
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.5px 5px;
+  border-radius: 4px;
+  pointer-events: none;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-apple);
+}
+
+.handle-wrapper-left .handle-label {
+  margin-left: 10px;
+}
+
+.handle-wrapper-right .handle-label {
+  margin-right: 10px;
+}
+
+/* Sockets label hovering triggers */
+.handle-wrapper:hover .handle-label {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
